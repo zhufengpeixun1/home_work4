@@ -30,8 +30,8 @@ Event.prototype.removeListener = function(eventName, callback) {
 Event.prototype.once = function(eventName, callBack) {
     var that = this;
     // 预处理，让用once绑定的事件在执行完后自己删除
-    function fn(s) {
-        callBack(s);
+    function fn(args) {
+        callBack(args);
         that.removeListener(eventName, arguments.callee);
     }
     if (this._events[eventName]) {
