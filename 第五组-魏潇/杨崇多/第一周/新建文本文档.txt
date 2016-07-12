@@ -1,4 +1,3 @@
-﻿姜老师好，这周作业实在不会写，希望老师可以讲解一下！
 EventEmitter.prototype.once = function once(type, listener) {
   if (typeof listener !== 'function')
     throw new TypeError('listener must be a function');
@@ -26,10 +25,10 @@ function makeP(path) {
 
     var i = 0;
     function mkdirTmp(){
-        //保存当前函数
+        //���浱ǰ����
         var callee = arguments.callee;
         if (i++ < ary.length) {
-            //当前文件夹
+            //��ǰ�ļ���
             var curDir = ary.slice(0, i).join('/');
             if(fs.existsSync(curDir)){
                 callee();
