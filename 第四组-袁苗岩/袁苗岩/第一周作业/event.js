@@ -1,4 +1,4 @@
-//一个事件的名字 对应着多个函数 一个事件名字对应一组事件
+﻿//一个事件的名字 对应着多个函数 一个事件名字对应一组事件
 //{"事件名":[eat,drink]}
 //on是订阅事件，emit是发布事件
 function Event (){
@@ -49,13 +49,11 @@ Event.prototype.once = function (eventName, callback) {
 
     var flag = 1;
     function g() {
-        this.removeListener(eventName, g);
-        if (flag == 1) {
-            callback.apply(this, arguments);
-            flag = 0;
-        }
+        callback.apply(this, arguments);
+	this.removeListener(eventName, g);
+        
     }
-    g.callback = callback;
+    
     this.on(eventName, g);
     return this;
 };
