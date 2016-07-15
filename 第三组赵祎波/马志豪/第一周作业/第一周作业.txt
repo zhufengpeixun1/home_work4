@@ -1,1 +1,28 @@
-CAPF
+
+var fs=require('fs');
+function makep(){
+    var ary=null;
+    for (var i=1;i<5;i++){
+        if (!fs.existsSync(ary)){
+            if (i==1) {
+                ary = i;
+                ary += '/';
+                fs.mkdir(ary, function (e) {
+                });
+                continue
+            }
+        }
+        if (i>5){
+            return
+        }
+        if (fs.existsSync(ary)){
+            ary+=i;
+            ary+='/';
+            fs.mkdir(ary, function (e) {
+
+            });
+            makep();
+        }
+    }
+}
+makep();
