@@ -1,24 +1,6 @@
-﻿姜老师好，这周作业实在不会写，希望老师可以讲解一下！
-EventEmitter.prototype.once = function once(type, listener) {
-  if (typeof listener !== 'function')
-    throw new TypeError('listener must be a function');
-
-  var fired = false;
-
-  function g() {
-    this.removeListener(type, g);
-
-    if (!fired) {
-      fired = true;
-      listener.apply(this, arguments);
-    }
-  }
-
-  g.listener = listener;
-  this.on(type, g);
-
-  return this;
-};
+/**
+ * Created by wx on 2016/7/11.
+ */
 var fs = require('fs');
 
 function makeP(path) {
