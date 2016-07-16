@@ -1,13 +1,15 @@
-var fs = require("fs");
-var path = require("path");
-function makeP(dirname, callback){
-    var flag=fs.existsSync(dirname);
-    if(flag){
-        callback(dirname);
-    }else{
-        makeP(path.dirname(dirname),function (){
-            fs.mkdir(dirname,callback);
+var fs=require('fs');
+function makeP(path){
+    var ary=path.split('/');
+    var str='';
+    if(!fs.existsSync(path)){
+        ary.forEach(function(item){
+            str += item + '/';
+            fs.mkdir(str, function () {
+                makeP(path)
+            });
         });
+
     }
 }
 makeP('a/b/c/d');
